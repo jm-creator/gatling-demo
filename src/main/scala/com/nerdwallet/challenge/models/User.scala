@@ -21,7 +21,7 @@ object User extends Utils {
 
   val getUser =
       exec(addCookie(Cookie("access_token", token)))
-      exec(http("Get user")
+      .exec(http("Get user")
       .get("v1/user/1")
       .header("security_token", token)
       .check(status.is(200))
