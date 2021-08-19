@@ -23,6 +23,9 @@
 hs_err_pid*
 target/
 idea/
+project/
+.bsp/
+.idea/
 
 .DS_Store
 .idea/workspace.xml
