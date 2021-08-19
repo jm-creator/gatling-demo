@@ -14,11 +14,7 @@ case class Challenge() extends BaseSimulation {
   val className: String = getClassName
 
   val scn: ScenarioBuilder = scenario(className)
-    .exec(addCookie(Cookie("access_token", "1")))
-    .repeat(5) {
       exec(User.postUser)
       exec(User.getUser)
-    }
-
   setUp(run(scn, className)).maxDuration(maxTimeout minutes)
 }

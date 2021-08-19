@@ -15,7 +15,8 @@ class BaseSimulation extends Simulation with Utils {
   val maxTimeout = getIntValue("sf.maxTimeout")
 
   def run(scn: ScenarioBuilder, className: String): PopulationBuilder = scn.inject(
-    rampUsers(getUsersAmount(className)) during getUsersBurst(className).minutes
+      rampConcurrentUsers(1).to(getUsersAmount(className)).during(getUsersBurst(className).minutes),
+      constantConcurrentUsers(getUsersAmount(className)).during(getUsersBurst(className).minutes)
   ).protocols(httpProtocol)
 
   def getIntValue(path: String):Int = conf.getInt(path)
