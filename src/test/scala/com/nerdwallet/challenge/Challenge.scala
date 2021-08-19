@@ -14,7 +14,7 @@ case class Challenge() extends BaseSimulation {
   val className: String = getClassName
 
   val scn: ScenarioBuilder = scenario(className)
-      exec(User.postUser)
-      exec(User.getUser)
+      .exec(User.postUser)
+      .exec(User.getUser)
   setUp(run(scn, className)).maxDuration(maxTimeout minutes)
 }
